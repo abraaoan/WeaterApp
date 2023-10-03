@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "4C0440E9-457D-490B-A9DF-DBE7EAF50003",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WheaterApp.xcodeproj",
+      "identifier" : "A1CB28422AAB041E003F0DC8",
+      "name" : "WheaterApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WheaterApp.xcodeproj",
+        "identifier" : "A167E4A72AC56EC600CF7F93",
+        "name" : "WheaterAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
