@@ -1,4 +1,4 @@
-# Cocus Tai Challenge
+# WeaterApp MVVM
 
 The project is in MVVM architecture and I try to separe things by folders. So there is a folder\layer *Data Service* that is responsible for all data in the project. Another folder that I use in a specific situations was the *factory*, responsible for delivery some objects. And the others are kind obvious, is the *View, ViewModel and Model*.
 
