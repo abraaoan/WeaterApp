@@ -54,6 +54,8 @@
 		A1CB28882AAB923D003F0DC8 /* IconService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB28872AAB923D003F0DC8 /* IconService.swift */; };
 		A1CB288A2AAB9D8E003F0DC8 /* WeatherIconAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB28892AAB9D8E003F0DC8 /* WeatherIconAPI.swift */; };
 		A1CB288F2AABA146003F0DC8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */; };
+		A1D557002ACF110F0028BF5C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */; };
+		A1D557032ACF14160028BF5C /* BgCardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D557022ACF14160028BF5C /* BgCardShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		A1CB28872AAB923D003F0DC8 /* IconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconService.swift; sourceTree = "<group>"; };
 		A1CB28892AAB9D8E003F0DC8 /* WeatherIconAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconAPI.swift; sourceTree = "<group>"; };
 		A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
+		A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		A1D557022ACF14160028BF5C /* BgCardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BgCardShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 		A167E4A12AC4C21E00CF7F93 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				A1D557012ACF13F20028BF5C /* Shapes */,
 				A167E4A22AC4C23F00CF7F93 /* RedactingView.swift */,
 				A14AC5602AC5DA1800A638C6 /* Settings.swift */,
 				A1C2A1EA2ACB52E300DD6854 /* MockUserDefaultContainer.swift */,
@@ -264,6 +269,7 @@
 				A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */,
 				A1CB28762AAB326D003F0DC8 /* HomeView.swift */,
 				A15BD5152AAC92B200162298 /* SearchView.swift */,
+				A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +343,14 @@
 				A1CB28892AAB9D8E003F0DC8 /* WeatherIconAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		A1D557012ACF13F20028BF5C /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				A1D557022ACF14160028BF5C /* BgCardShape.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +477,7 @@
 				A1CB28592AAB071F003F0DC8 /* DataService.swift in Sources */,
 				A1C2A1EB2ACB52E300DD6854 /* MockUserDefaultContainer.swift in Sources */,
 				A1CB28792AAB395A003F0DC8 /* WeatherAPI.swift in Sources */,
+				A1D557032ACF14160028BF5C /* BgCardShape.swift in Sources */,
 				A1CB285E2AAB0D0D003F0DC8 /* ListResult.swift in Sources */,
 				A14AC5612AC5DA1800A638C6 /* Settings.swift in Sources */,
 				A1CB28772AAB326D003F0DC8 /* HomeView.swift in Sources */,
@@ -493,6 +508,7 @@
 				A1CB28472AAB041E003F0DC8 /* WeaterApp.swift in Sources */,
 				A1CB287F2AAB85F4003F0DC8 /* RWeather.swift in Sources */,
 				A1CB285C2AAB0CB6003F0DC8 /* Weather.swift in Sources */,
+				A1D557002ACF110F0028BF5C /* SwiftUIView.swift in Sources */,
 				A15BD5202AAE11E300162298 /* CityViewModel.swift in Sources */,
 				A1CB28622AAB1332003F0DC8 /* Response.swift in Sources */,
 			);

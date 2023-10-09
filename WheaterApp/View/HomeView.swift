@@ -23,11 +23,8 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                 List {
                     ForEach(viewModel.sections, id: \.id) { section in
                         Section(header:
-                            Text(section.date).padding(
-                            EdgeInsets(top: 0,
-                                       leading: -16,
-                                       bottom: 0,
-                                       trailing: 0))
+                                    Text(section.date)
+                            .font(.system(size: 18, weight: .regular))
                         ) {
                             ContentCell(section: section,
                                         iconService: iconService,
@@ -36,7 +33,7 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                         .headerProminence(.increased)
                     }
                 }
-                .listStyle(.insetGrouped)
+                .listStyle(.inset)
             }
             .navigationTitle(viewModel.cityName)
             .toolbar {
@@ -83,13 +80,18 @@ private struct ContentCell: View {
                     let viewModel = CardViewModelFactory.createCardViewModel(rweather: weather,
                                                                              service: iconService)
                     CardView(viewModel: viewModel)
-                        .padding(4)
                         .redacted(reason: isLoading ? .placeholder : [])
+                        .padding(.leading, 6)
                 }
             }
+            .padding(.top, 3.0)
+            .padding(.bottom, 3.0)
+            .padding(.trailing, 26)
+            .offset(x: 14)
         }
-        .padding(6)
         .scrollIndicators(SwiftUI.ScrollIndicatorVisibility.hidden)
+        .listRowInsets(EdgeInsets())
+        .listRowSeparator(.hidden)
     }
 }
 

@@ -11,7 +11,6 @@ import Combine
 
 protocol CardViewModelProtocol: ObservableObject {
     var icon: UIImage { get }
-    var isLoading: Bool { get }
     var temp: String { get }
     var time: String { get }
     func fetchIcon()
@@ -19,7 +18,6 @@ protocol CardViewModelProtocol: ObservableObject {
 
 class CardViewModel:  ObservableObject {
     @Published private(set) var icon: UIImage = UIImage(systemName: "cloud")!
-    @Published private(set) var isLoading: Bool = true
     private(set) var temp: String
     private(set) var time: String
     private let weather: RWeather
@@ -38,16 +36,14 @@ class CardViewModel:  ObservableObject {
 
 extension CardViewModel: CardViewModelProtocol {
     func fetchIcon() {
-        isLoading = true
         service.fetch(iconId: weather.icon)
-            .sink {[weak self] status in
+            .sink { status in
                 switch status {
-                case .finished:
-                    self?.isLoading = false
+                case .finished: break
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { self.icon = $0 }
+            } receiveValue: { [weak self] in self?.icon = $0 }
             .store(in: &cancellables)
     }
 }

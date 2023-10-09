@@ -40,7 +40,7 @@ enum WeatherFactory {
         }
         
         func formatTime(date: Date) -> String {
-            formatter.dateFormat = "HH"
+            formatter.dateFormat = "HH:mm"
             return formatter.string(from: date)
         }
         

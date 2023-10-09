@@ -15,18 +15,31 @@ struct CardView<CardViewModelObservable>: View where CardViewModelObservable: Ca
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(viewModel.time)
+                .font(.system(size: 12))
+                .foregroundColor(Color("textColor"))
+                .padding(.bottom, 0)
             Image(uiImage: viewModel.icon)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 60, height: 40)
                 .cornerRadius(8)
-                .redacted(reason: viewModel.isLoading ? .placeholder : [])
+                .padding(.leading, 25)
+                .padding(.top, -14)
             Text(viewModel.temp)
+                .font(.system(size: 26))
+                .foregroundColor(Color("textColor"))
                 .padding(.top, 4)
         }
-        .padding(4)
+        .padding(10)
+        .background(
+            BgCardShape()
+                .fill(LinearGradient(colors: [Color("cardDark"),
+                                              Color("cardLight")],
+                                     startPoint: .bottomLeading,
+                                     endPoint: .topTrailing))
+                .shadow(color: .black.opacity(0.15), radius: 2, y: 2))
         .task {
             Task { viewModel.fetchIcon() }
         }
