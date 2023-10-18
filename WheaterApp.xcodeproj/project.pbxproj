@@ -24,6 +24,7 @@
 		A15BD5202AAE11E300162298 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BD51F2AAE11E300162298 /* CityViewModel.swift */; };
 		A15BD5222AAF1A4C00162298 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BD5212AAF1A4C00162298 /* PinAnnotation.swift */; };
 		A15BD5242AAF350E00162298 /* MockIconService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BD5232AAF350E00162298 /* MockIconService.swift */; };
+		A161C41B2ADADEC2000BE893 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161C41A2ADADEC2000BE893 /* File.swift */; };
 		A167E4A32AC4C23F00CF7F93 /* RedactingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167E4A22AC4C23F00CF7F93 /* RedactingView.swift */; };
 		A167E4AB2AC56EC600CF7F93 /* WheaterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167E4AA2AC56EC600CF7F93 /* WheaterAppTests.swift */; };
 		A167E4B32AC582B800CF7F93 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167E4B22AC582B800CF7F93 /* DataServiceTests.swift */; };
@@ -87,6 +88,7 @@
 		A15BD51F2AAE11E300162298 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		A15BD5212AAF1A4C00162298 /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		A15BD5232AAF350E00162298 /* MockIconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockIconService.swift; sourceTree = "<group>"; };
+		A161C41A2ADADEC2000BE893 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A167E4A22AC4C23F00CF7F93 /* RedactingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactingView.swift; sourceTree = "<group>"; };
 		A167E4A82AC56EC600CF7F93 /* WheaterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WheaterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A167E4AA2AC56EC600CF7F93 /* WheaterAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterAppTests.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				A167E4A22AC4C23F00CF7F93 /* RedactingView.swift */,
 				A14AC5602AC5DA1800A638C6 /* Settings.swift */,
 				A1C2A1EA2ACB52E300DD6854 /* MockUserDefaultContainer.swift */,
+				A161C41A2ADADEC2000BE893 /* File.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				A1CB28772AAB326D003F0DC8 /* HomeView.swift in Sources */,
 				A1CB287D2AAB789A003F0DC8 /* CardView.swift in Sources */,
 				A15BD51A2AAC9DC900162298 /* City.swift in Sources */,
+				A161C41B2ADADEC2000BE893 /* File.swift in Sources */,
 				A1CB286D2AAB2AA4003F0DC8 /* EndPoint.swift in Sources */,
 				A15BD51D2AACBA8600162298 /* Mocks.swift in Sources */,
 				A1CB287B2AAB589C003F0DC8 /* MockDataService.swift in Sources */,

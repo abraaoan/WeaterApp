@@ -21,6 +21,9 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
             VStack(alignment: .leading) {
                 header
                 List {
+                    MainCard
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
                     ForEach(viewModel.sections, id: \.id) { section in
                         Section(header:
                                     Text(section.date)
@@ -35,12 +38,6 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                 }
                 .listStyle(.inset)
             }
-            .navigationTitle(viewModel.cityName)
-            .toolbar {
-                Button("Change city") {
-                    viewModel.isShowingSearch.toggle()
-                }
-            }
         }
         .sheet(isPresented: $viewModel.isShowingSearch) {
             let viewModel = SearchViewModelFactory.createSearchViewModel(service: viewModel.service)
@@ -53,18 +50,78 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
     }
     
     private var header: some View {
-        HStack {
-            NavigationLink("City detail") {
-                if let section = viewModel.sections.first {
-                    let viewModel = CityViewModelFactory.createCityViewModel(section: section,
-                                                                             city: viewModel.currentCity,
-                                                                             service: iconService)
-                    CityDetailView(viewModel: viewModel)
-                        .redacted(reason: self.viewModel.isLoading ? .placeholder : [])
+        HStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                Text("Weather forecast")
+                    .padding(.leading, 15)
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(Color("textColor"))
+                HStack {
+                    NavigationLink(viewModel.cityName) {
+                        if let section = viewModel.sections.first {
+                            let viewModel = CityViewModelFactory.createCityViewModel(section: section,
+                                                                                     city: viewModel.currentCity,
+                                                                                     service: iconService)
+                            CityDetailView(viewModel: viewModel)
+                                .redacted(reason: self.viewModel.isLoading ? .placeholder : [])
+                        }
+                    }
+                    .foregroundColor(Color("textColor").opacity(0.5))
+                    .buttonStyle(.plain)
+                    .padding(.leading, 15.0)
                 }
             }
-            .padding(.leading, 15.0)
+            Spacer()
+            Circle()
+                .fill(LinearGradient(colors: [Color("cardDark").opacity(0.5),
+                                              Color("cardLight").opacity(0.5)],
+                                     startPoint: .bottom,
+                                     endPoint: .top))
+                .frame(width: 60)
+                .padding(.trailing, 20)
         }
+    }
+    
+    private var MainCard: some View {
+        HStack() {
+            VStack(alignment: .leading) {
+                Text("Today")
+                    .padding(.leading, 25)
+                    .padding(.top, 25)
+                Spacer()
+                Text("23º")
+                    .padding(.leading, 25)
+                    .font(.system(size: 38, weight: .bold))
+                Spacer()
+                Text("Porto, Portugal")
+                    .padding(.leading, 25)
+                    .padding(.bottom, 25)
+            }
+            Spacer()
+            VStack {
+                Text("Thur, 4 de out")
+                    .padding(.trailing, 25)
+                    .padding(.top, 25)
+                Spacer()
+                Image("placeholder") .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .padding(.trailing, 25)
+                    .padding(.top, -125)
+            }
+        }
+        .font(.system(size: 14))
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity,
+               minHeight: (UIScreen.main.bounds.size.width - 40) / 2,
+               maxHeight: (UIScreen.main.bounds.size.width - 40) / 2)
+        .background(LinearGradient(colors: [Color("mainCardDark"), Color("mainCardLight")],
+                                   startPoint: .bottom,
+                                   endPoint: .top))
+        .cornerRadius(20)
+        .padding(.leading, 15)
+        .padding(.trailing, 15)
+        .shadow(color: .black.opacity(0.15), radius: 2, y: 2)
     }
 }
 

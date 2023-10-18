@@ -22,7 +22,7 @@ protocol HomeViewModelProtocol: ObservableObject {
 }
 
 class HomeViewModel: ObservableObject {
-    @Published var cityName = "..."
+    @Published var cityName = "Loading ..."
     @Published var sections = [RSection]()
     @Published var isShowingSearch = false
     @Published var isLoading: Bool = true
