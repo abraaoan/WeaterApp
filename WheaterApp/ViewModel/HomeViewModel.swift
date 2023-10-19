@@ -16,7 +16,7 @@ protocol HomeViewModelProtocol: ObservableObject {
     var currentCity: City { get }
     var service: DataServiceProtocol { get }
     
-    func fetchWeater(city: City) async throws
+    func fetchWeater(city: City) async
     func loadCity() async -> City
     func didChangeCity(city: City) async
 }
@@ -59,7 +59,7 @@ class HomeViewModel: ObservableObject {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
-    func fetchWeater(city: City) async throws {
+    func fetchWeater(city: City) async {
         await addPlaceholderCards()
         let serviceResponse = await service.fetchWeater(coord: Coord(lat: city.lat, lon: city.lon))
 
@@ -68,7 +68,8 @@ extension HomeViewModel: HomeViewModelProtocol {
             await handleServiceResult(city: city, response: response)
             
         case let .failure(error):
-            throw error
+            //throw error
+            print(error.localizedDescription)
         }
     }
     
@@ -79,7 +80,7 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
     
     func didChangeCity(city: City) async {
-        try? await fetchWeater(city: city)
+        await fetchWeater(city: city)
         await MainActor.run(body: { [weak self] in
             self?.currentCity = city
             self?.cityName = city.name

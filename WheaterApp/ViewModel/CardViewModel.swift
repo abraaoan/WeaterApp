@@ -17,7 +17,7 @@ protocol CardViewModelProtocol: ObservableObject {
 }
 
 class CardViewModel:  ObservableObject {
-    @Published private(set) var icon: UIImage = UIImage(systemName: "cloud")!
+    @Published var icon: UIImage = UIImage(named: "placeholder")!
     private(set) var temp: String
     private(set) var time: String
     private let weather: RWeather

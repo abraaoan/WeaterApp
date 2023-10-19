@@ -28,9 +28,9 @@ struct CardView<CardViewModelObservable>: View where CardViewModelObservable: Ca
                 .padding(.leading, 25)
                 .padding(.top, -14)
             Text(viewModel.temp)
-                .font(.system(size: 26))
+                .font(.system(size: 26, weight: .semibold))
                 .foregroundColor(Color("textColor"))
-                .padding(.top, 4)
+                .padding(.top, -4)
         }
         .padding(10)
         .background(

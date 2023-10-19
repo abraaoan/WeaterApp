@@ -15,17 +15,9 @@ class MockIconService: IconServiceProtocol {
     func fetch(iconId: String) -> AnyPublisher<UIImage, Error> {
         return Just(UIImage(named: "placeholder")!)
             .tryMap({ [weak self] in
-                self?.handleFinish()
+                self?.fetchDidFinishHandle?()
                 return $0
             })
             .eraseToAnyPublisher()
-    }
-    
-    private func handleFinish() {
-        if let didFinishHandle = fetchDidFinishHandle {
-            didFinishHandle()
-        } else {
-            assertionFailure("Did finish handle not instaciated.")
-        }
     }
 }

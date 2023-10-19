@@ -45,7 +45,7 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
         }
         .task {
             let city = await viewModel.loadCity()
-            try? await viewModel.fetchWeater(city: city)
+            await viewModel.fetchWeater(city: city)
         }
     }
     
@@ -53,24 +53,24 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
                 Text("Weather forecast")
-                    .padding(.leading, 15)
                     .font(.system(size: 20, weight: .medium))
                     .foregroundColor(Color("textColor"))
                 HStack {
-                    NavigationLink(viewModel.cityName) {
-                        if let section = viewModel.sections.first {
-                            let viewModel = CityViewModelFactory.createCityViewModel(section: section,
-                                                                                     city: viewModel.currentCity,
-                                                                                     service: iconService)
-                            CityDetailView(viewModel: viewModel)
-                                .redacted(reason: self.viewModel.isLoading ? .placeholder : [])
-                        }
-                    }
+                    Text(viewModel.cityName)
                     .foregroundColor(Color("textColor").opacity(0.5))
                     .buttonStyle(.plain)
-                    .padding(.leading, 15.0)
+                    .onTapGesture { viewModel.isShowingSearch.toggle() }
+                    
+                    Image(uiImage: UIImage(systemName: "chevron.down")!)
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 8)
+                        .foregroundColor(Color("textColor").opacity(0.5))
                 }
+                .padding(.top, -12)
             }
+            .padding(.leading, 20)
             Spacer()
             Circle()
                 .fill(LinearGradient(colors: [Color("cardDark").opacity(0.5),
@@ -113,12 +113,13 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
         .font(.system(size: 14))
         .foregroundColor(.white)
         .frame(maxWidth: .infinity,
-               minHeight: (UIScreen.main.bounds.size.width - 40) / 2,
-               maxHeight: (UIScreen.main.bounds.size.width - 40) / 2)
+               minHeight: (UIScreen.main.bounds.size.width - 30) / 2,
+               maxHeight: (UIScreen.main.bounds.size.width - 30) / 2)
         .background(LinearGradient(colors: [Color("mainCardDark"), Color("mainCardLight")],
                                    startPoint: .bottom,
                                    endPoint: .top))
         .cornerRadius(20)
+        .padding(.top, 15)
         .padding(.leading, 15)
         .padding(.trailing, 15)
         .shadow(color: .black.opacity(0.15), radius: 2, y: 2)
@@ -154,12 +155,17 @@ private struct ContentCell: View {
 
 struct HomeView_Previews: PreviewProvider {
     
-    static let service = MockDataService()
+    
+    static let userDefault = MockUserDefaultContainer()
+    static let service = MockDataService(userDefaultsContainer: userDefault)
     static let iconService = MockIconService()
     static let viewModel = HomeViewModel(service: service)
     
     static var previews: some View {
-        HomeView(viewModel: viewModel,
-                 iconService: iconService)
+        Group {
+            HomeView(viewModel: viewModel,
+                     iconService: iconService)
+            .previewDisplayName("Full Home")
+        }
     }
 }
