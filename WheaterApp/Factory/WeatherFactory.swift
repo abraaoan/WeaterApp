@@ -44,10 +44,16 @@ enum WeatherFactory {
             return formatter.string(from: date)
         }
         
+        func formatMainCardDate(date: Date) -> String {
+            formatter.dateFormat = "EE, d MMM"
+            return formatter.string(from: date)
+        }
+        
         func handleListWeather(values: [ListResult]) -> [RWeather] {
             let results: [RWeather] = values.compactMap { value in
                 guard let icon = value.weather.first?.icon else { return nil }
                 return RWeather(time: formatTime(date: value.date),
+                                date: formatMainCardDate(date: value.date),
                                 icon: icon,
                                 temp: "\(Int(value.main.temp))º",
                                 max: "\(Int(value.main.tempMax))º",

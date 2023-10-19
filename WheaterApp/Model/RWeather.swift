@@ -11,6 +11,7 @@ import Foundation
 struct RWeather: Identifiable {
     let id = UUID().uuidString
     let time: String
+    let date: String
     let icon: String
     let temp: String
     let max: String

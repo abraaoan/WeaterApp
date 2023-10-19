@@ -11,12 +11,13 @@ import Combine
 protocol HomeViewModelProtocol: ObservableObject {
     var cityName: String { get }
     var sections: [RSection] { get }
+    var weather: RWeather? { get }
     var isShowingSearch: Bool { get set }
     var isLoading: Bool { get set }
     var searchResultCity: City { get set }
     var currentCity: City { get }
     var service: DataServiceProtocol { get }
-    var sectionsPublisher: Published<[RSection]>.Publisher { get }
+    var weatherPublisher: Published<RWeather?>.Publisher { get }
     
     func fetchWeater(city: City) async
     func loadCity() async -> City
@@ -25,15 +26,20 @@ protocol HomeViewModelProtocol: ObservableObject {
 
 class HomeViewModel: ObservableObject {
     @Published var cityName = "Loading ..."
-    @Published var sections = [RSection]()
+    @Published var sections = [RSection]() {
+        didSet {
+            weather = sections.first?.weather.first
+        }
+    }
     @Published var isShowingSearch = false
     @Published var isLoading: Bool = true
+    @Published var weather: RWeather?
     @Published var searchResultCity: City = Mock.city {
         didSet {
             Task { await didChangeCity(city: searchResultCity) }
         }
     }
-    var sectionsPublisher: Published<[RSection]>.Publisher { $sections }
+    var weatherPublisher: Published<RWeather?>.Publisher { $weather }
     var currentCity: City = Mock.city
     var service: DataServiceProtocol
     
@@ -44,6 +50,7 @@ class HomeViewModel: ObservableObject {
     private func handleServiceResult(city: City, response: Response) async {
         await MainActor.run(body: { [weak self] in
             self?.isLoading = false
+            self?.currentCity = city
             self?.cityName = city.name
             self?.sections = WeatherFactory.createWeathers(response: response)
         })

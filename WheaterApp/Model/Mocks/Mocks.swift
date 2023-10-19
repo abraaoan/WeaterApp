@@ -23,6 +23,7 @@ enum Mock {
     static let section = RSection(date: "Sunday, Sep 10",
                                   weather: [
                                     RWeather(time: "19",
+                                             date: "Thur, 04 Out",
                                              icon: "02d",
                                              temp: "36º",
                                              max: "36º",
@@ -75,6 +76,7 @@ enum Mock {
                              lon: -8.6107884)
     
     static let weather = RWeather(time: "12",
+                                  date: "Thur, 04 Out",
                                   icon: "02d",
                                   temp: "18º",
                                   max: "25º",

@@ -31,18 +31,19 @@ class MainCardViewModel: ObservableObject {
     }
     
     private func startObserving() {
-        homeViewModel.sectionsPublisher
+        homeViewModel.weatherPublisher
             .receive(on: RunLoop.main)
-            .sink { [weak self] sections in
-                self?.handleResult(sections: sections)
+            .sink { [weak self] weather in
+                self?.handleResult(weather: weather)
             }
             .store(in: &cancellables)
     }
     
-    private func handleResult(sections: [RSection]) {
-        guard let weather = sections.first?.weather.first else { return }
+    private func handleResult(weather: RWeather?) {
+        guard let weather = weather else { return }
+        print("---> tep: \(weather.temp) date: \(weather.date) location: \(homeViewModel.currentCity.name) \(homeViewModel.currentCity.state ?? "")")
         temp = weather.temp
-        date = weather.time
+        date = weather.date
         handleLocation()
     }
     

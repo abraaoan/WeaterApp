@@ -49,6 +49,7 @@ struct CardView<CardViewModelObservable>: View where CardViewModelObservable: Ca
 struct CardView_Previews: PreviewProvider {
     static let service = MockIconService()
     static let weather = RWeather(time: "22",
+                                  date: "Thur, 04 Out",
                                   icon: "02d",
                                   temp: "25º",
                                   max: "26º",
