@@ -13,9 +13,11 @@ class MockDataService: DataServiceProtocol {
     var saveCityToLocalHandler: (() -> ())?
     var fetchWeaterHandler: (() -> ())?
     var userDefaultService: UserDefaultsService
+    let loadCity: City
     
-    init(userDefaultsContainer: SettingsProtocol = UserDefaultsContainer()) {
+    init(userDefaultsContainer: SettingsProtocol = UserDefaultsContainer(), loadCity: City = Mock.city) {
         self.userDefaultService = UserDefaultsService(settingsContainer: userDefaultsContainer)
+        self.loadCity = loadCity
     }
     
     func fetchWeater(coord: Coord) async -> Result<Response, Error> {
@@ -45,7 +47,7 @@ class MockDataService: DataServiceProtocol {
         }
     }
     
-    func loadLocalCity() async -> City { Mock.city }
+    func loadLocalCity() async -> City { loadCity }
     
     func saveCityToLocal(city: City) async {
         guard let saveCityToLocalHandler = saveCityToLocalHandler else {

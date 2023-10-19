@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol HomeViewModelProtocol: ObservableObject {
     var cityName: String { get }
@@ -15,6 +16,7 @@ protocol HomeViewModelProtocol: ObservableObject {
     var searchResultCity: City { get set }
     var currentCity: City { get }
     var service: DataServiceProtocol { get }
+    var sectionsPublisher: Published<[RSection]>.Publisher { get }
     
     func fetchWeater(city: City) async
     func loadCity() async -> City
@@ -31,6 +33,7 @@ class HomeViewModel: ObservableObject {
             Task { await didChangeCity(city: searchResultCity) }
         }
     }
+    var sectionsPublisher: Published<[RSection]>.Publisher { $sections }
     var currentCity: City = Mock.city
     var service: DataServiceProtocol
     

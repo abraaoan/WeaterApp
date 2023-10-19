@@ -24,7 +24,7 @@ struct CardView<CardViewModelObservable>: View where CardViewModelObservable: Ca
                 .resizable()
                 .scaledToFill()
                 .frame(width: 60, height: 40)
-                .cornerRadius(8)
+                .cornerRadius(30)
                 .padding(.leading, 25)
                 .padding(.top, -14)
             Text(viewModel.temp)

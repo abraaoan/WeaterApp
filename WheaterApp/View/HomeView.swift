@@ -10,10 +10,12 @@ import SwiftUI
 struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: HomeViewModelProtocol {
     @ObservedObject private var viewModel: HomeViewModelObservable
     let iconService: IconServiceProtocol
+    let mainCardViewModel: MainCardViewModel
     
-    init(viewModel: HomeViewModelObservable, iconService: IconServiceProtocol) {
+    init(viewModel: HomeViewModelObservable, iconService: IconServiceProtocol, mainCardViewModel: MainCardViewModel) {
         self.viewModel = viewModel
         self.iconService = iconService
+        self.mainCardViewModel = mainCardViewModel
     }
     
     var body: some View {
@@ -21,7 +23,7 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
             VStack(alignment: .leading) {
                 header
                 List {
-                    MainCard
+                    MainCardView(viewModel: mainCardViewModel)
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
                     ForEach(viewModel.sections, id: \.id) { section in
@@ -81,49 +83,6 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                 .padding(.trailing, 20)
         }
     }
-    
-    private var MainCard: some View {
-        HStack() {
-            VStack(alignment: .leading) {
-                Text("Today")
-                    .padding(.leading, 25)
-                    .padding(.top, 25)
-                Spacer()
-                Text("23º")
-                    .padding(.leading, 25)
-                    .font(.system(size: 38, weight: .bold))
-                Spacer()
-                Text("Porto, Portugal")
-                    .padding(.leading, 25)
-                    .padding(.bottom, 25)
-            }
-            Spacer()
-            VStack {
-                Text("Thur, 4 de out")
-                    .padding(.trailing, 25)
-                    .padding(.top, 25)
-                Spacer()
-                Image("placeholder") .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .padding(.trailing, 25)
-                    .padding(.top, -125)
-            }
-        }
-        .font(.system(size: 14))
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity,
-               minHeight: (UIScreen.main.bounds.size.width - 30) / 2,
-               maxHeight: (UIScreen.main.bounds.size.width - 30) / 2)
-        .background(LinearGradient(colors: [Color("mainCardDark"), Color("mainCardLight")],
-                                   startPoint: .bottom,
-                                   endPoint: .top))
-        .cornerRadius(20)
-        .padding(.top, 15)
-        .padding(.leading, 15)
-        .padding(.trailing, 15)
-        .shadow(color: .black.opacity(0.15), radius: 2, y: 2)
-    }
 }
 
 private struct ContentCell: View {
@@ -154,18 +113,25 @@ private struct ContentCell: View {
 }
 
 struct HomeView_Previews: PreviewProvider {
-    
-    
     static let userDefault = MockUserDefaultContainer()
     static let service = MockDataService(userDefaultsContainer: userDefault)
+    static let loadingStateService = MockDataService(userDefaultsContainer: userDefault, loadCity: Mock.emptyCity)
     static let iconService = MockIconService()
     static let viewModel = HomeViewModel(service: service)
+    static let loadingViewModel = HomeViewModel(service: loadingStateService)
+    static let mainCardViewModel = MainCardViewModel(homeViewModel: viewModel)
     
     static var previews: some View {
         Group {
             HomeView(viewModel: viewModel,
-                     iconService: iconService)
+                     iconService: iconService,
+                     mainCardViewModel: mainCardViewModel)
             .previewDisplayName("Full Home")
+            
+            HomeView(viewModel: loadingViewModel,
+                     iconService: iconService,
+                     mainCardViewModel: mainCardViewModel)
+            .previewDisplayName("Placeholder")
         }
     }
 }

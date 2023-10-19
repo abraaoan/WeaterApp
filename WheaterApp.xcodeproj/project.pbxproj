@@ -57,6 +57,8 @@
 		A1CB288F2AABA146003F0DC8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */; };
 		A1D557002ACF110F0028BF5C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */; };
 		A1D557032ACF14160028BF5C /* BgCardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D557022ACF14160028BF5C /* BgCardShape.swift */; };
+		A1EDA9252AE1486000F1CA65 /* MainCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA9242AE1486000F1CA65 /* MainCardViewModel.swift */; };
+		A1EDA9282AE1487800F1CA65 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA9272AE1487800F1CA65 /* MainCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
 		A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		A1D557022ACF14160028BF5C /* BgCardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BgCardShape.swift; sourceTree = "<group>"; };
+		A1EDA9242AE1486000F1CA65 /* MainCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardViewModel.swift; sourceTree = "<group>"; };
+		A1EDA9272AE1487800F1CA65 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,7 @@
 				A1CB287C2AAB789A003F0DC8 /* CardView.swift */,
 				A1CB288E2AABA146003F0DC8 /* CityDetailView.swift */,
 				A1CB28762AAB326D003F0DC8 /* HomeView.swift */,
+				A1EDA9272AE1487800F1CA65 /* MainCardView.swift */,
 				A15BD5152AAC92B200162298 /* SearchView.swift */,
 				A1D556FF2ACF110F0028BF5C /* SwiftUIView.swift */,
 			);
@@ -283,6 +288,7 @@
 				A1CB28822AAB86AC003F0DC8 /* CardViewModel.swift */,
 				A15BD51F2AAE11E300162298 /* CityViewModel.swift */,
 				A1CB28742AAB325F003F0DC8 /* HomeViewModel.swift */,
+				A1EDA9242AE1486000F1CA65 /* MainCardViewModel.swift */,
 				A15BD5172AAC9C9500162298 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
@@ -481,6 +487,7 @@
 				A1C2A1EB2ACB52E300DD6854 /* MockUserDefaultContainer.swift in Sources */,
 				A1CB28792AAB395A003F0DC8 /* WeatherAPI.swift in Sources */,
 				A1D557032ACF14160028BF5C /* BgCardShape.swift in Sources */,
+				A1EDA9252AE1486000F1CA65 /* MainCardViewModel.swift in Sources */,
 				A1CB285E2AAB0D0D003F0DC8 /* ListResult.swift in Sources */,
 				A14AC5612AC5DA1800A638C6 /* Settings.swift in Sources */,
 				A1CB28772AAB326D003F0DC8 /* HomeView.swift in Sources */,
@@ -494,6 +501,7 @@
 				A1CB28732AAB2B7E003F0DC8 /* RequestError.swift in Sources */,
 				A1CB28832AAB86AC003F0DC8 /* CardViewModel.swift in Sources */,
 				A10BD3582AC469B30032F5D9 /* HomeViewFactory.swift in Sources */,
+				A1EDA9282AE1487800F1CA65 /* MainCardView.swift in Sources */,
 				A1CB28602AAB0FC9003F0DC8 /* RCity.swift in Sources */,
 				A1CB288A2AAB9D8E003F0DC8 /* WeatherIconAPI.swift in Sources */,
 				A10BD3562AC462200032F5D9 /* CityViewModelFactory.swift in Sources */,

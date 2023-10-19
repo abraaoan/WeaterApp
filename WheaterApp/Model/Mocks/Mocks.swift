@@ -14,6 +14,12 @@ enum Mock {
                            country: "PT",
                            state: nil)
     
+    static let emptyCity = City(name: "",
+                                lat: 0.0,
+                                lon: -0.0,
+                           country: "",
+                           state: nil)
+    
     static let section = RSection(date: "Sunday, Sep 10",
                                   weather: [
                                     RWeather(time: "19",
@@ -51,7 +57,7 @@ enum Mock {
                                                                    main: "",
                                                                    description: "not Clean",
                                                                    icon: "02d")]),
-                                      ListResult(date: Date(timeIntervalSince1970: 1694131200),
+                                      ListResult(date: Date(),
                                                  main: Main(temp: 18,
                                                             feelsLike: 18,
                                                             tempMin: 12,
