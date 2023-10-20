@@ -14,13 +14,15 @@ protocol MainCardViewModelProtocol: ObservableObject {
     var date: String { get }
     var location: String { get }
     var icon: UIImage { get }
+    var isLoading: Bool { get }
 }
 
 class MainCardViewModel: ObservableObject {
-    @Published var temp: String = ""
-    @Published var date: String = ""
-    @Published var location: String = ""
+    @Published var temp: String = ".."
+    @Published var date: String = "loading..."
+    @Published var location: String = "loading..."
     @Published var icon = UIImage(named: "placeholder")!
+    @Published var isLoading: Bool = true
     private var cancellables = Set<AnyCancellable>()
     
     let homeViewModel: any HomeViewModelProtocol
@@ -41,10 +43,10 @@ class MainCardViewModel: ObservableObject {
     
     private func handleResult(weather: RWeather?) {
         guard let weather = weather else { return }
-        print("---> tep: \(weather.temp) date: \(weather.date) location: \(homeViewModel.currentCity.name) \(homeViewModel.currentCity.state ?? "")")
         temp = weather.temp
         date = weather.date
         handleLocation()
+        isLoading = false
     }
     
     private func handleLocation() {

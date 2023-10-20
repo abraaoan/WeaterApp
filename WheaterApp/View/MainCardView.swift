@@ -53,7 +53,7 @@ struct MainCardView<MainCardViewModelObservable>: View where MainCardViewModelOb
         .padding(.leading, 15)
         .padding(.trailing, 15)
         .shadow(color: .black.opacity(0.15), radius: 2, y: 2)
-//        .redacted(reason: .placeholder)
+        .redacted(reason: viewModel.isLoading ? .placeholder : [])
     }
 }
 
