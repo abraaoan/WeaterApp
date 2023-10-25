@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainCardView<MainCardViewModelObservable>: View where MainCardViewModelObservable: MainCardViewModelProtocol {
-    
     @ObservedObject var viewModel: MainCardViewModelObservable
+    @Environment(\.redactionReasons) var redactionReasons
     
     var body: some View {
         HStack() {
@@ -32,7 +32,8 @@ struct MainCardView<MainCardViewModelObservable>: View where MainCardViewModelOb
                     .padding(.trailing, 25)
                     .padding(.top, 25)
                 Spacer()
-                Image("placeholder") .resizable()
+                Image(uiImage: viewModel.icon)
+                    .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
                     .cornerRadius(20)
@@ -45,7 +46,8 @@ struct MainCardView<MainCardViewModelObservable>: View where MainCardViewModelOb
         .frame(maxWidth: .infinity,
                minHeight: (UIScreen.main.bounds.size.width - 30) / 2,
                maxHeight: (UIScreen.main.bounds.size.width - 30) / 2)
-        .background(LinearGradient(colors: [Color("mainCardDark"), Color("mainCardLight")],
+        .background(LinearGradient(colors: [redactionReasons.contains(.placeholder) ? .gray.opacity(99) : Color("mainCardDark"),
+                                            redactionReasons.contains(.placeholder) ? .gray.opacity(59) : Color("mainCardLight")],
                                    startPoint: .bottom,
                                    endPoint: .top))
         .cornerRadius(20)

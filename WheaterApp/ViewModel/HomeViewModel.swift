@@ -63,7 +63,7 @@ class HomeViewModel: ObservableObject {
     private func addPlaceholderCards() async {
         await MainActor.run(body: { [weak self] in
             self?.isLoading = true
-            self?.sections = WeatherFactory.createWeathers(response: Mock.response)
+            self?.sections = WeatherFactory.createWeathers(response: Mock.responseLoading)
         })
     }
 }

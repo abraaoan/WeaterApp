@@ -23,12 +23,15 @@ class MainCardViewModel: ObservableObject {
     @Published var location: String = "loading..."
     @Published var icon = UIImage(named: "placeholder")!
     @Published var isLoading: Bool = true
+    private let service: IconServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
     let homeViewModel: any HomeViewModelProtocol
     
-    init(homeViewModel: any HomeViewModelProtocol) {
+    init(homeViewModel: any HomeViewModelProtocol,
+         service: IconServiceProtocol = IconService()) {
         self.homeViewModel = homeViewModel
+        self.service = service
         startObserving()
     }
     
@@ -46,6 +49,7 @@ class MainCardViewModel: ObservableObject {
         temp = weather.temp
         date = weather.date
         handleLocation()
+        fetchIcon(weather: weather)
         isLoading = false
     }
     
@@ -57,6 +61,18 @@ class MainCardViewModel: ObservableObject {
         } else {
             location = "\(name)"
         }
+    }
+    
+    private func fetchIcon(weather: RWeather) {
+        service.fetch(iconId: weather.icon)
+            .sink { status in
+                switch status {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] in self?.icon = $0 }
+            .store(in: &cancellables)
     }
 }
 

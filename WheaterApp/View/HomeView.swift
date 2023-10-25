@@ -26,6 +26,7 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                     MainCardView(viewModel: mainCardViewModel)
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
+                        .redacted(reason: viewModel.isLoading ? .placeholder : [])
                     ForEach(viewModel.sections, id: \.id) { section in
                         Section(header:
                                     Text(section.date)
@@ -75,8 +76,8 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
             .padding(.leading, 20)
             Spacer()
             Circle()
-                .fill(LinearGradient(colors: [Color("cardDark").opacity(0.5),
-                                              Color("cardLight").opacity(0.5)],
+                .fill(LinearGradient(colors: [viewModel.isLoading ? .gray.opacity(0.5) : Color("cardDark").opacity(0.5),
+                                              viewModel.isLoading ? .gray.opacity(0.25) : Color("cardLight").opacity(0.5)],
                                      startPoint: .bottom,
                                      endPoint: .top))
                 .frame(width: 60)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView<CardViewModelObservable>: View where CardViewModelObservable: CardViewModelProtocol {
     @ObservedObject var viewModel: CardViewModelObservable
+    @Environment(\.redactionReasons) var redactionReasons
     
     init(viewModel: CardViewModelObservable) {
         self.viewModel = viewModel
@@ -33,16 +34,19 @@ struct CardView<CardViewModelObservable>: View where CardViewModelObservable: Ca
                 .padding(.top, -4)
         }
         .padding(10)
-        .background(
-            BgCardShape()
-                .fill(LinearGradient(colors: [Color("cardDark"),
-                                              Color("cardLight")],
-                                     startPoint: .bottomLeading,
-                                     endPoint: .topTrailing))
-                .shadow(color: .black.opacity(0.15), radius: 2, y: 2))
+        .background(backgroundShape(isPlaceholder: redactionReasons.contains(.placeholder)))
         .task {
             Task { viewModel.fetchIcon() }
         }
+    }
+    
+    func backgroundShape(isPlaceholder: Bool) -> some View  {
+        BgCardShape()
+            .fill(LinearGradient(colors: [isPlaceholder ? .white.opacity(0.99) : Color("cardDark"),
+                                          isPlaceholder ? .white.opacity(0.59) : Color("cardLight")],
+                                 startPoint: .bottomLeading,
+                                 endPoint: .topTrailing))
+            .shadow(color: .black.opacity(0.15), radius: 2, y: 2)
     }
 }
 
