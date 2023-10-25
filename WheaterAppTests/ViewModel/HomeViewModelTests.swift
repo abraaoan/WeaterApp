@@ -11,13 +11,13 @@ import XCTest
 final class HomeViewModelTests: XCTestCase {
     let service = MockDataService()
     
-    func testFetchWeaterResponse() async throws {
+    func testFetchWeaterResponse() async {
         // Given
         let city = Mock.city
         
         // When
         let sut = HomeViewModel(service: service)
-        try await sut.fetchWeater(city: city)
+        await sut.fetchWeater(city: city)
         
         // Then
         XCTAssertFalse(sut.isLoading)
@@ -35,14 +35,10 @@ final class HomeViewModelTests: XCTestCase {
         
         // When
         let sut = HomeViewModel(service: service)
+        await sut.fetchWeater(city: city)
         
         // Then
-        do {
-            try await sut.fetchWeater(city: city)
-            XCTFail("this test should not have response")
-        } catch {
-            XCTAssertNotNil(error)
-        }
+        XCTAssertEqual(sut.sections.count, 0)
     }
     
     func testLoadCity() async {

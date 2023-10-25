@@ -17,7 +17,8 @@ final class CityViewModelTests: XCTestCase {
         // Given
         let section = RSection(date: "Sunday, Sep 10",
                                weather: [
-                                 RWeather(time: "19",
+                                RWeather(time: "19",
+                                         date: "25 oct",
                                           icon: "02d",
                                           temp: "36º",
                                           max: "36º",

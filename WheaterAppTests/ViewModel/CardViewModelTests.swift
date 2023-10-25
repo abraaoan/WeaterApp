@@ -17,6 +17,7 @@ final class CardViewModelTests: XCTestCase {
     func testConstructorVars() {
         // Given (Arrange)
         let weather = RWeather(time: "17:35",
+                               date: "25 Out",
                                icon: "02D",
                                temp: "24º",
                                max: "25º",

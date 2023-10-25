@@ -72,7 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A108362D2AC5B9F800DCB823 /* CocusTuiChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CocusTuiChallenge.xctestplan; sourceTree = "<group>"; };
+		A108362D2AC5B9F800DCB823 /* WeatherApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WeatherApp.xctestplan; sourceTree = "<group>"; };
 		A108362F2AC5BD7500DCB823 /* WeatherAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPITests.swift; sourceTree = "<group>"; };
 		A10BD3532AC4590A0032F5D9 /* CardViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModelFactory.swift; sourceTree = "<group>"; };
 		A10BD3552AC462200032F5D9 /* CityViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelFactory.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		A1CB283A2AAB041E003F0DC8 = {
 			isa = PBXGroup;
 			children = (
-				A108362D2AC5B9F800DCB823 /* CocusTuiChallenge.xctestplan */,
+				A108362D2AC5B9F800DCB823 /* WeatherApp.xctestplan */,
 				A1CB28452AAB041E003F0DC8 /* WheaterApp */,
 				A167E4A92AC56EC600CF7F93 /* WheaterAppTests */,
 				A1CB28442AAB041E003F0DC8 /* Products */,

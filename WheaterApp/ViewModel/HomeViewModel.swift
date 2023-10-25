@@ -78,6 +78,7 @@ extension HomeViewModel: HomeViewModelProtocol {
             await handleServiceResult(city: city, response: response)
             
         case let .failure(error):
+            self.sections.removeAll()
             //throw error
             print(error.localizedDescription)
         }

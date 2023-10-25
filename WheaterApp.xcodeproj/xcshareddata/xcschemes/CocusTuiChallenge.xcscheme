@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:CocusTuiChallenge.xctestplan"
+            reference = "container:WeatherApp.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

@@ -39,6 +39,7 @@ struct HomeView<HomeViewModelObservable>: View where HomeViewModelObservable: Ho
                         .headerProminence(.increased)
                     }
                 }
+                .animation(.easeIn, value: !viewModel.isLoading)
                 .listStyle(.inset)
             }
         }
