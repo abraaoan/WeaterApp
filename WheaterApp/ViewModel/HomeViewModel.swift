@@ -40,6 +40,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     var weatherPublisher: Published<RWeather?>.Publisher { $weather }
+    var state: RequestState = .initial // Insert in protocol
+    
     var currentCity: City = Mock.city
     var service: DataServiceProtocol
     
@@ -53,6 +55,7 @@ class HomeViewModel: ObservableObject {
             self?.currentCity = city
             self?.cityName = city.name
             self?.sections = WeatherFactory.createWeathers(response: response)
+            self?.state = .success
         })
     }
     
@@ -62,6 +65,7 @@ class HomeViewModel: ObservableObject {
     
     private func addPlaceholderCards() async {
         await MainActor.run(body: { [weak self] in
+            self?.state = .loading
             self?.isLoading = true
             self?.sections = WeatherFactory.createWeathers(response: Mock.responseLoading)
         })
@@ -79,7 +83,7 @@ extension HomeViewModel: HomeViewModelProtocol {
             
         case let .failure(error):
             self.sections.removeAll()
-            //throw error
+            state = .failure(error)
             print(error.localizedDescription)
         }
     }

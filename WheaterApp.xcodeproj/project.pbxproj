@@ -12,6 +12,7 @@
 		A10BD3562AC462200032F5D9 /* CityViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BD3552AC462200032F5D9 /* CityViewModelFactory.swift */; };
 		A10BD3582AC469B30032F5D9 /* HomeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BD3572AC469B30032F5D9 /* HomeViewFactory.swift */; };
 		A10BD35A2AC46CC30032F5D9 /* SearchViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BD3592AC46CC30032F5D9 /* SearchViewModelFactory.swift */; };
+		A146808B2AE95C4D00FFE33E /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146808A2AE95C4D00FFE33E /* RequestState.swift */; };
 		A14AC55D2AC5D07500A638C6 /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = A14AC55C2AC5D07500A638C6 /* forecast.json */; };
 		A14AC55F2AC5D30700A638C6 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = A14AC55E2AC5D30700A638C6 /* cities.json */; };
 		A14AC5612AC5DA1800A638C6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14AC5602AC5DA1800A638C6 /* Settings.swift */; };
@@ -78,6 +79,7 @@
 		A10BD3552AC462200032F5D9 /* CityViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelFactory.swift; sourceTree = "<group>"; };
 		A10BD3572AC469B30032F5D9 /* HomeViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFactory.swift; sourceTree = "<group>"; };
 		A10BD3592AC46CC30032F5D9 /* SearchViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelFactory.swift; sourceTree = "<group>"; };
+		A146808A2AE95C4D00FFE33E /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
 		A14AC55C2AC5D07500A638C6 /* forecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forecast.json; sourceTree = "<group>"; };
 		A14AC55E2AC5D30700A638C6 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		A14AC5602AC5DA1800A638C6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				A1CB286E2AAB2B3F003F0DC8 /* HTTPMethod.swift */,
 				A1CB28702AAB2B70003F0DC8 /* HTTPClient.swift */,
 				A1CB28722AAB2B7E003F0DC8 /* RequestError.swift */,
+				A146808A2AE95C4D00FFE33E /* RequestState.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				A1CB286D2AAB2AA4003F0DC8 /* EndPoint.swift in Sources */,
 				A15BD51D2AACBA8600162298 /* Mocks.swift in Sources */,
 				A1CB287B2AAB589C003F0DC8 /* MockDataService.swift in Sources */,
+				A146808B2AE95C4D00FFE33E /* RequestState.swift in Sources */,
 				A10BD35A2AC46CC30032F5D9 /* SearchViewModelFactory.swift in Sources */,
 				A1CB28732AAB2B7E003F0DC8 /* RequestError.swift in Sources */,
 				A1CB28832AAB86AC003F0DC8 /* CardViewModel.swift in Sources */,
