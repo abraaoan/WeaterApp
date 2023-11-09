@@ -1,6 +1,6 @@
 //
 //  WeatherIconAPI.swift
-//  CocusTuiChallenge
+//  WeaterApp
 //
 //  Created by Abraao Nascimento on 08/09/2023.
 //
